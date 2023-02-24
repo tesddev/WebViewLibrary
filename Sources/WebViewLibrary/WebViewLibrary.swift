@@ -2,7 +2,6 @@ import Foundation
 import UIKit
 import WebKit
 
-//public class WebViewLibrary: WKWebView {
 public class WebViewLibrary: UIViewController, UIWebViewDelegate {
     
     public var link: String
@@ -18,20 +17,10 @@ public class WebViewLibrary: UIViewController, UIWebViewDelegate {
     
     private let grabberView: UIView = {
         let view = UIView()
-        view.backgroundColor = .green
+        view.backgroundColor = .gray
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 3
         return view
-    }()
-    
-    lazy var backButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: "cancelInCircle"), for: .normal)
-        button.tintColor = .black
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .medium)
-        button.addTarget(self, action: #selector(didTapBackButton), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
     }()
     
     let linkTextField: UITextField = {
@@ -42,24 +31,27 @@ public class WebViewLibrary: UIViewController, UIWebViewDelegate {
         textField.font = UIFont.systemFont(ofSize: 14)
         textField.textAlignment = .left
         textField.layer.cornerRadius = 4
-        textField.backgroundColor = .gray
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = UIColor.black.cgColor
+        textField.backgroundColor = .white
         textField.autocapitalizationType = .none
         textField.autocorrectionType = .no
-        textField.placeholder = "https://www.jumia.com.ng/adidas-core-sneak.."
+        textField.placeholder = "https://www.fb.com"
+        textField.isUserInteractionEnabled = false
         return textField
     }()
     
     private let webView: UIWebView = {
         let view = UIWebView()
-        view.backgroundColor = .blue
+        view.backgroundColor = .white
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 8
         return view
     }()
     
-    lazy var acceptAndContinueButton: UIButton = {
+    lazy var closeButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Accept and Continue", for: .normal)
+        button.setTitle("Close", for: .normal)
         button.clipsToBounds = true
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         button.layer.cornerRadius = 4
@@ -92,14 +84,13 @@ public class WebViewLibrary: UIViewController, UIWebViewDelegate {
     private func activateConstraint() {
         view.addSubview(bigView)
         bigView.addSubview(grabberView)
-        bigView.addSubview(backButton)
         bigView.addSubview(webView)
         bigView.addSubview(linkTextField)
-        bigView.addSubview(acceptAndContinueButton)
+        bigView.addSubview(closeButton)
         
         
         NSLayoutConstraint.activate([
-            bigView.heightAnchor.constraint(equalToConstant: 597),
+            bigView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.9),
             bigView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             bigView.widthAnchor.constraint(equalTo: view.widthAnchor),
             bigView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -109,23 +100,20 @@ public class WebViewLibrary: UIViewController, UIWebViewDelegate {
             grabberView.widthAnchor.constraint(equalToConstant: 48),
             grabberView.heightAnchor.constraint(equalToConstant: 4),
             
-            backButton.topAnchor.constraint(equalTo: bigView.topAnchor, constant: 32),
-            backButton.trailingAnchor.constraint(equalTo: bigView.trailingAnchor, constant: -20),
-            
-            linkTextField.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 30),
+            linkTextField.topAnchor.constraint(equalTo: grabberView.bottomAnchor, constant: 30),
             linkTextField.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             linkTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9),
             linkTextField.heightAnchor.constraint(equalToConstant: 40),
             
             webView.topAnchor.constraint(equalTo: linkTextField.bottomAnchor, constant: 28),
             webView.centerXAnchor.constraint(equalTo: bigView.centerXAnchor),
-            webView.heightAnchor.constraint(equalToConstant: 298),
+            webView.bottomAnchor.constraint(equalTo: closeButton.topAnchor, constant: -20),
             webView.widthAnchor.constraint(equalTo: bigView.widthAnchor, multiplier: 0.9),
             
-            acceptAndContinueButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            acceptAndContinueButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9),
-            acceptAndContinueButton.heightAnchor.constraint(equalToConstant: 40),
-            acceptAndContinueButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
+            closeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            closeButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9),
+            closeButton.heightAnchor.constraint(equalToConstant: 40),
+            closeButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
         ])
     }
     
@@ -135,7 +123,12 @@ public class WebViewLibrary: UIViewController, UIWebViewDelegate {
     
     @objc func didTapBackButton() {
         print("new option")
-        self.dismiss(animated: true)
+        if self.isModal {
+            self.dismiss(animated: true)
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
+        
     }
     
     /// WebView Delegates
@@ -149,5 +142,17 @@ public class WebViewLibrary: UIViewController, UIWebViewDelegate {
     
     public func webViewDidFinishLoad(_ webView: UIWebView) {
         print("Webview did finish load")
+    }
+}
+
+extension UIViewController {
+
+    var isModal: Bool {
+
+        let presentingIsModal = presentingViewController != nil
+        let presentingIsNavigation = navigationController?.presentingViewController?.presentedViewController == navigationController
+        let presentingIsTabBar = tabBarController?.presentingViewController is UITabBarController
+
+        return presentingIsModal || presentingIsNavigation || presentingIsTabBar
     }
 }
