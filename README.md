@@ -1,3 +1,3 @@
 # WebViewLibrary
 
-A description of this package.
+A package to simulate a customized webview.
