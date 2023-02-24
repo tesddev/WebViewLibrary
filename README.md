@@ -4,7 +4,7 @@ A package for a customized webview.
 
 ## How to use
 - Import WebViewLibrary to your project with either SPM or Cocoapods
-- Import WebViewLibrary in the class or view controller that would use the web view as such:
+- Import WebViewLibrary in the class, view controller, method or delegate methods in case of textfields that would use the web e.g:
 
 ```
     import UIKit
