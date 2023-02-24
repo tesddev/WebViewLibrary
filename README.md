@@ -15,7 +15,7 @@ A package for a customized webview.
         override func viewDidLoad() {
             super.viewDidLoad()
             view.backgroundColor = .red
-            let vc = WebViewLibrary(link: "https://instagram.com")
+            let vc = WebViewLibrary(link: "https://your-url")
             self.navigationController?.present(vc, animated: true)
         }
     }
