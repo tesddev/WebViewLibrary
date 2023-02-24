@@ -22,7 +22,7 @@ A package for a customized webview.
     
 ```
     
-- Initialize WebViewLibrary with the link it is to load; ensure the link is a valid url and has in this format- "https://your-url"
+- Initialize WebViewLibrary with the link it is to load; ensure the link is a valid url and has in this format- `"https://your-url"`
 - Run your project and see it in action.
 
 #### How it looks: 
