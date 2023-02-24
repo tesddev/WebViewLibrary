@@ -80,7 +80,7 @@ public class WebViewLibrary: UIViewController, UIWebViewDelegate {
         linkTextField.text = link
     }
     
-    init(link: String) {
+    public init(link: String) {
         self.link = link
         super.init(nibName: nil, bundle: nil)
     }
