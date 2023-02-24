@@ -5,7 +5,7 @@ import WebKit
 //public class WebViewLibrary: WKWebView {
 public class WebViewLibrary: UIViewController, UIWebViewDelegate {
     
-    var link: String
+    public var link: String
     
     private let bigView: UIView = {
         let view = UIView()
