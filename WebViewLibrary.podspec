@@ -17,9 +17,9 @@ Pod::Spec.new do |s|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
-  s.description      = 
-  WebViewLibrary is a simple easy to use library for implementing webview in ios applications. It comes with designated design with a textfield atop to display the parent link, a webview underneath and a button to close.
-  Just initialize WebViewLibrary with the link it is to load; ensure the link is a valid url and has in this format- `"https://your-url"` , then run your project and see it in action.
+  s.description      =
+  'WebViewLibrary is a simple easy to use library for implementing web view of Swift SDK in ios apps. It comes with designated design with a textfield atop to display the parent link, a web view underneath and a button to close.
+  Just initialize WebViewLibrary with the link it is to load ensure the link is a valid url and has in this format- https://your-url , then run your project and see it in action.'
                       
 
   s.homepage         = 'https://github.com/tesddev/WebViewLibrary'
