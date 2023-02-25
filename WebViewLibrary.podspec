@@ -37,9 +37,9 @@ Pod::Spec.new do |s|
   #   'WebViewLibrary' => ['WebViewLibrary/Assets/*.png']
   # }
   
-  s.swift_versions = 4.0
+  s.swift_versions = '4.0'
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
-  s.frameworks = 'UIKit', 'WebKit'
+  # s.frameworks = 'UIKit', 'WebKit'
   # s.dependency 'AFNetworking', '~> 2.3'
 end
