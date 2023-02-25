@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'WebViewLibrary'
-  s.version          = '0.1.0'
+  s.version          = '4.0'
   s.summary          = 'WebViewLibrary is a faster way of implementing webview with a sleeker design.'
 
 # This description is used to generate tags and improve search results.
