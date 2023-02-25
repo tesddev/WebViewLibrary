@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'WebViewLibrary'
-  s.version          = '4.0'
+  s.version          = '0.1.0'
   s.summary          = 'WebViewLibrary is a faster way of implementing webview with a sleeker design.'
 
 # This description is used to generate tags and improve search results.
@@ -36,8 +36,10 @@ Pod::Spec.new do |s|
   # s.resource_bundles = {
   #   'WebViewLibrary' => ['WebViewLibrary/Assets/*.png']
   # }
+  
+  s.swift_versions = 4.0
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
+  s.frameworks = 'UIKit', 'WebKit'
   # s.dependency 'AFNetworking', '~> 2.3'
 end
