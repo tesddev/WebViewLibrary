@@ -13,8 +13,8 @@ BASIC EXAMPLE
         override func viewDidLoad() {
             super.viewDidLoad()
             view.backgroundColor = .red
-            let vc = WebViewLibrary(link: "https://your-url")
-            self.navigationController?.present(vc, animated: true)
+            let viewController = WebViewLibrary(link: "https://your-url")
+            self.navigationController?.present(viewController, animated: true)
         }
     }
     
@@ -23,7 +23,7 @@ Futher Customization
 ---------
 If you do not need the link textfield to show, you can do this:
 ```swift
-    let vc = TestViewController(link: "https://fb.com", isLinkTextfieldHidden: true)
+    let viewController = WebViewLibrary(link: "https://fb.com", isLinkTextfieldHidden: true)
 ```
 
 Setup Instruction
