@@ -108,7 +108,6 @@ public class WebViewLibrary: UIViewController, UIWebViewDelegate {
             linkTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9),
             linkTextField.heightAnchor.constraint(equalToConstant: 40),
             
-            webView.topAnchor.constraint(equalTo: linkTextField.bottomAnchor, constant: 28),
             webView.centerXAnchor.constraint(equalTo: bigView.centerXAnchor),
             webView.bottomAnchor.constraint(equalTo: closeButton.topAnchor, constant: -20),
             webView.widthAnchor.constraint(equalTo: bigView.widthAnchor, multiplier: 0.9),
@@ -118,6 +117,12 @@ public class WebViewLibrary: UIViewController, UIWebViewDelegate {
             closeButton.heightAnchor.constraint(equalToConstant: 40),
             closeButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
         ])
+        
+        if isLinkTextfieldHidden {
+            webView.topAnchor.constraint(equalTo: grabberView.bottomAnchor, constant: 30).isActive = true
+        } else {
+            webView.topAnchor.constraint(equalTo: linkTextField.bottomAnchor, constant: 28).isActive = true
+        }
     }
     
     @objc func didTapSavedOptionButton() {
