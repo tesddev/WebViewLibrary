@@ -5,7 +5,7 @@ import WebKit
 public class WebViewLibrary: UIViewController, UIWebViewDelegate {
     
     public var link: String
-    public var isLinkTextfieldHidden: Bool?
+    public var isLinkTextfieldHidden: Bool
     
     private let bigView: UIView = {
         let view = UIView()
@@ -71,10 +71,10 @@ public class WebViewLibrary: UIViewController, UIWebViewDelegate {
         webView.loadRequest(NSURLRequest(url: NSURL(string: link)! as URL) as URLRequest)
         webView.delegate = self
         linkTextField.text = link
-        self.linkTextField.isHidden = isLinkTextfieldHidden ?? false
+        self.linkTextField.isHidden = isLinkTextfieldHidden
     }
     
-    public init(link: String, isLinkTextfieldHidden: Bool?) {
+    public init(link: String, isLinkTextfieldHidden: Bool = false) {
         self.link = link
         self.isLinkTextfieldHidden = isLinkTextfieldHidden
         super.init(nibName: nil, bundle: nil)
