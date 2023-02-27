@@ -74,7 +74,7 @@ public class WebViewLibrary: UIViewController, UIWebViewDelegate {
         self.linkTextField.isHidden = isLinkTextfieldHidden ?? false
     }
     
-    public init(link: String, isLinkTextfieldHidden: Bool?) {
+    public init(link: String, isLinkTextfieldHidden: Bool? = false) {
         self.link = link
         self.isLinkTextfieldHidden = isLinkTextfieldHidden
         super.init(nibName: nil, bundle: nil)
