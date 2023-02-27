@@ -19,6 +19,13 @@ BASIC EXAMPLE
     }
     
 ```
+Futher Customization
+---------
+If you do not need the link textfield to show, you can do this:
+```swift
+    let vc = TestViewController(link: "https://fb.com", isLinkTextfieldHidden: true)
+```
+
 Setup Instruction
 ---------
 - ### COCOAPODS
